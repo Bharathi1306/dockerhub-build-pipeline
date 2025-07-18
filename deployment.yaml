@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerhub-app-deployment
+  labels:
+    app: dockerhub-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerhub-app
+  template:
+    metadata:
+      labels:
+        app: dockerhub-app
+    spec:
+      containers:
+      - name: dockerhub-app-container
+        image: bharathi136/dockerhub-build-pipeline:7
+        ports:
+        - containerPort: 3000
